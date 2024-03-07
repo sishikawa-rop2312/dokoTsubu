@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -42,9 +43,12 @@ public class Login extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		String name = request.getParameter("name");
 		String pass = request.getParameter("pass");
+
+		Random rnd = new Random();
+		int icon = rnd.nextInt(4) + 1;
 		
 		// Userインスタンス（ユーザ情報）の生成
-		User user = new User(name, pass);
+		User user = new User(name, pass, icon);
 		
 		// ログイン処理
 		LoginLogic loginLogic = new LoginLogic();

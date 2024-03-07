@@ -79,7 +79,7 @@ public class Main extends HttpServlet {
 			User loginUser = (User)session.getAttribute("loginUser");
 			
 			// つぶやきを作成してっつぶやきリストに追加
-			Mutter mutter = new Mutter(loginUser.getName(), text);
+			Mutter mutter = new Mutter(loginUser.getName(), text, loginUser.getIcon());
 			PostMutterLogic postMutterLogic = new PostMutterLogic();
 			postMutterLogic.execute(mutter, mutterList);
 			

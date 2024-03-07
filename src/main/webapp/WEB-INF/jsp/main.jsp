@@ -16,11 +16,31 @@ String errorMsg = (String)request.getAttribute("errorMsg");
 <head>
 <meta charset="UTF-8">
 <title>どこつぶ</title>
+<style>
+.list {
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+.list li {
+	border-top: 1px solid #ccc;
+    padding: 5px 0;
+}
+.center {
+	display: flex;
+    align-items: center;
+}
+.icon {
+	border: 2px solid #0cc100;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 5px;
+}
+</style>
 </head>
 <body>
 <h1>どこつぶメイン</h1>
-<p>
-<%= loginUser.getName() %>さん、ログイン中
+<p class="center">
+<%= loginUser.getName() %><img class="icon" src="images/p00<%= loginUser.getIcon() %>.gif">さん、ログイン中
 <a href="Logout">ログアウト</a>
 </p>
 <p><a href="Main">更新</a></p>
@@ -31,8 +51,10 @@ String errorMsg = (String)request.getAttribute("errorMsg");
 <% if (errorMsg != null) { %>
 <p><%= errorMsg %></p>
 <% } %>
+<ul class="list">
 <% for(Mutter mutter : mutterList) { %>
-<p><%= mutter.getUserName() %>:<%= mutter.getText() %></p>
+<li class="center"><%= mutter.getUserName() %><img class="icon" src="images/p00<%= mutter.getIcon() %>.gif">:<%= mutter.getText() %></li>
 <% } %>
+</ul>
 </body>
 </html>
